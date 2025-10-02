@@ -9,27 +9,22 @@ from email.mime.application import MIMEApplication
 # ==============================
 SMTP_SERVER = "smtp.gmail.com"
 SMTP_PORT = 587
-SENDER_EMAIL = "stembyrysera@gmail.com"
-SENDER_PASSWORD = "hpdk wcvq wfmt pnsk"  # Use App Password, not your real password
+SENDER_EMAIL = "Yor email"
+SENDER_PASSWORD = "Your Password"  # Use App Password, not your real password
 
-SUBJECT_TEMPLATE = "🎓 Congratulations, {Name}! Here’s Your AI Course Participation E-Certificate – RYSERA STEM"
-BODY_TEMPLATE = """Dear {Name},
+SUBJECT_TEMPLATE = "-- your message subject"
+BODY_TEMPLATE = """
 
-Congratulations! 🎉
 
-You have successfully completed the AI Innovation Course conducted by RYSERA STEM.
-As a token of recognition for your dedication and effort, we are pleased to present your Course Completion E-Certificate.
+Body
 
-📎 Attached: Your official e-certificate (PDF)
 
-Best regards,
-Rysera Stem
 """
 
 # ==============================
 # LOAD STUDENT DATA
 # ==============================
-df = pd.read_excel("Student completion list.xlsx")  # or pd.read_csv("students.csv")
+df = pd.read_excel("your .xlsx")  # or pd.read_csv("students.csv")
 
 # ==============================
 # SEND EMAILS
@@ -41,7 +36,7 @@ server.login(SENDER_EMAIL, SENDER_PASSWORD)
 for _, row in df.iterrows():
     name = row["Name"]
     email = row["Email"]
-    cert_file = row["Certificate_File"]
+    cert_file = row["Certificate_File"]  #column names in your .xlsx file
 
     # Create email
     msg = MIMEMultipart()
